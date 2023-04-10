@@ -1,0 +1,214 @@
+:root {
+    --circle-color: #867070;
+}
+
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.container {
+    /* padding:1rem; */
+    top: 0;
+    position: relative;
+    height: 100% !important;
+}
+
+nav {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.8);
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    padding-right: 10rem;
+
+}
+
+nav ul.auth {
+    padding-top: 1rem;
+}
+
+nav ul.main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 5rem;
+}
+
+nav li .nav-item {
+    padding: 0.75rem;
+}
+
+.nav-item a, .auth-item a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+}
+
+.nav-item.active {
+    font-weight: bold;
+}
+
+.nav-item.logo {
+    position: absolute;
+    background-color: white;
+    margin-top: 5rem;
+    margin-left: 5rem;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.circle {
+    font-size: 3rem;
+    border-radius: 50%;
+    width: 40%;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.circle p {
+    color: var(--circle-color);
+}
+
+/* RESPONSIVENESS */
+
+/* Extra small devices (phones) */
+@media only screen and (max-width: 576px) {
+    /* Styles here */
+}
+
+/* Small devices (tablets) */
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+    /* Styles here */
+}
+
+/* Medium devices (desktops) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    /* Styles here */
+}
+
+/* Large devices (large desktops) */
+@media only screen and (max-width: 992px) {
+    nav{
+        position: relative;
+    }
+
+    .nav-item.logo{
+        position: relative;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: auto;
+    }
+
+    nav ul>* {
+        margin: auto;
+
+    }
+
+    nav ul.auth, nav ul.main {
+        padding: 1rem;
+        margin-top: 1rem;
+        border-top: 1px solid var(--circle-color);
+    }
+}
+
+
+/* COMMONLY USED STYLES*/
+.ml-auto {
+    margin-left: auto !important;
+}
+
+.mr-auto {
+    margin-right: auto !important;
+}
+
+.mt-auto {
+    margin-top: auto !important;
+}
+
+.mb-auto {
+    margin-bottom: auto !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.text-small {
+    font-size: small;
+}
+
+.text-smaller {
+    font-size: smaller;
+}
+
+.text-xs {
+    font-size: x-small;
+}
+
+.text-lg {
+    font-size: large;
+}
+
+.text-xl {
+    font-size: x-large;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-cover {
+    height: 80vh;
+    width: 100vw;
+    object-fit: cover;
+}
+
+.p-absolute {
+    position: absolute;
+}
+
+.p-relative {
+    position: relative;
+}
