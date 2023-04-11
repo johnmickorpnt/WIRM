@@ -1,5 +1,5 @@
 <?php
-$title = "Home - Cafe Lupe";
+$title = "About us - Cafe Lupe";
 $content = <<<CONTENT
     <img src="assets/imgs/cover.jpg" alt="" class="img-cover p-relative" style="z-index: 0;">
     <section class="circle center">

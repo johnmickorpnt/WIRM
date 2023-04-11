@@ -6,32 +6,29 @@
     </div>
     <ul class="auth">
         <li class="auth-item ml-auto">
-            <a href="#">Login</a>
+            <a href="auth/login">Login</a>
         </li>
         <li class="auth-item">
-            <a href="#">Register</a>
+            <a href="auth/register">Register</a>
         </li>
     </ul>
     <ul class="main">
-        <li class="nav-item active" style="margin-left:auto">
-            <a href="gasga" target="_blank" rel="noopener noreferrer">
+        <li class="nav-item <?php is_active('home')?>" style="margin-left:auto">
+            <a href="home" rel="noopener noreferrer">
                 Home
             </a>
         </li>
-        <li class="nav-item">
-            <a href="gasga">Reservation</a>
+        <li class="nav-item <?php is_active('reservation')?>">
+            <a href="reservation">Reservation</a>
         </li>
-        <li class="nav-item">
-            <a href="gasga">Services</a>
+        <li class="nav-item <?php is_active('services')?>">
+            <a href="services">Services</a>
         </li>
-        <li class="nav-item">
-            <a href="gasga">Promos</a>
+        <li class="nav-item <?php is_active('promos')?>">
+            <a href="promos">Promos</a>
         </li>
-        <li class="nav-item">
-            <a href="gasga">Services</a>
-        </li>
-        <li class="nav-item">
-            <a href="gasga">About us</a>
+        <li class="nav-item <?php is_active('about-us')?>">
+            <a href="about-us">About us</a>
         </li>
     </ul>
 </nav>
