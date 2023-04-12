@@ -148,6 +148,7 @@ nav li .nav-item {
     border: none;
     background-color: var(--circle-color);
     color: white;
+    text-decoration: none;
 }
 
 input {
@@ -289,6 +290,76 @@ button:focus {
 }
 
 
+.room-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.room-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    gap: .25rem;
+}
+
+.room-item p {
+    margin-top: 5%;
+}
+
+.room-price {
+    font-weight: bold;
+}
+
+.schedule {
+    font-style: italic;
+}
+
+li.error {
+    color: red;
+}
+
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+select option {
+    background-color: white;
+    color: black;
+}
+
+select:focus {
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    resize: none;
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+textarea:hover,
+textarea:focus {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
 /* RESPONSIVENESS */
 

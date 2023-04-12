@@ -6,7 +6,7 @@ $content = <<<CONTENT
         <hr>
         <h1>Our Menu</h1>
     </div>
-    <div class="gallery-container">
+    <section class="gallery-container">
         <div class="gallery-slide">
             <img src="assets/imgs/menu/beverages1.webp" class="img-fluid">
             <img src="assets/imgs/menu/beverages2.webp" class="img-fluid">
@@ -22,12 +22,12 @@ $content = <<<CONTENT
         <div class="arrow-btn right-arrow">
             <i class="fa-solid fa-chevron-right"></i>
         </div>
-    </div>
+    </section>
     <div class="hr-container">
         <hr>
         <h1>CASA ALEGRIA HOSTEL ROOMS</h1>
     </div>
-    <div class="gallery-container">
+    <section class="gallery-container">
         <div class="gallery-slide">
             <img src="assets/imgs/menu/beverages1.webp" class="img-fluid">
             <img src="assets/imgs/menu/beverages2.webp" class="img-fluid">
@@ -43,7 +43,45 @@ $content = <<<CONTENT
         <div class="arrow-btn right-arrow">
             <i class="fa-solid fa-chevron-right"></i>
         </div>
-    </div>
+    </section>
+    <section class="room-section">
+        <div class="room-item">
+            <h2>2 Single Beds</h2>
+            <img src="assets/imgs/rooms/2-single-beds.webp" class="img-fluid" alt="">
+            <span class="room-price">Php 2,200</span>
+            <span class="schedule">Sunday to Thursday</span>
+            <span class="room-price">Php 3,410</span>
+            <span class="schedule">Friday to Saturday</span>
+            <p>2 Person Capacity</p>
+        </div>
+        <div class="room-item">
+            <h2>1 King Sized Bed</h2>
+            <img src="assets/imgs/rooms/1-king-sized-bed.webp" class="img-fluid" alt="">
+            <span class="room-price">Php4,620</span>
+            <span class="schedule">Sunday to Thursday</span>
+            <span class="room-price">Php5,830</span>
+            <span class="schedule">Friday to Saturday</span>
+            <p>2 Person Capacity</p>
+        </div>
+        <div class="room-item">
+            <h2>1 Queen Sized Bed</h2>
+            <img src="assets/imgs/rooms/1-queen-sized-bed.webp" class="img-fluid" alt="">
+            <span class="room-price">Php4,620</span>
+            <span class="schedule">Sunday to Thursday</span>
+            <span class="room-price">Php5,830</span>
+            <span class="schedule">Friday to Saturday</span>
+            <p>2 Person Capacity</p>
+        </div>
+        <div class="room-item">
+            <h2>Suite Room</h2>
+            <img src="assets/imgs/rooms/suite-room.webp" class="img-fluid" alt="">
+            <span class="room-price">Php8,000</span>
+            <span class="schedule">Sunday to Thursday</span>
+            <span class="room-price">Php10,000</span>
+            <span class="schedule">Friday to Saturday</span>
+            <p>2 Person Capacity</p>
+        </div>
+    </section>
 CONTENT;
 ?>
 

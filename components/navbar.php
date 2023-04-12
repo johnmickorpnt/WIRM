@@ -5,12 +5,20 @@
         </a>
     </div>
     <ul class="auth">
+        <?php
+        echo isset($_SESSION["id"]) ? <<<CONTENT
+        <li class="auth-item ml-auto">
+            <a href="php/functions/auth/logout.php">Logout</a>
+        </li>
+        CONTENT : <<<CONTENT
         <li class="auth-item ml-auto">
             <a href="auth/login">Login</a>
         </li>
         <li class="auth-item">
             <a href="auth/register">Register</a>
         </li>
+        CONTENT;
+        ?>
     </ul>
     <ul class="main">
         <li class="nav-item <?php is_active('home')?>" style="margin-left:auto">

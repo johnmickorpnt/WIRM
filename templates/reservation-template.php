@@ -1,6 +1,10 @@
 <?php
-session_start();
-require_once("php/functions.php");
+$_SESSION["errors"] = array();
+if(!isset($_SESSION["id"])){
+    array_push($_SESSION["errors"], "Please make sure you are logged in to make a reservation!");
+    header('Location: ' . 'auth/login.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +19,8 @@ require_once("php/functions.php");
 </head>
 
 <body>
-    <?php include("components/navbar.php"); ?>
-    <main class="container <?php echo isset($containerClass) ? $containerClass : ""; ?>" 
-        <?php echo isset($containerStyles) ? "style='{$containerStyles}'" : "" ?>>
-        <?php echo $content; ?>
+    <main class="card-container">
+        <?php echo isset($content) ? $content : ""; ?>
     </main>
 </body>
 
