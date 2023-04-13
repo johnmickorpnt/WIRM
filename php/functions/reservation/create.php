@@ -4,6 +4,7 @@ session_start();
 require_once "../../config/Database.php";
 require_once "../../models/Reservation.php";
 
+
 $valid = array();
 $_SESSION["msg"] = array();
 $_SESSION["errors"] = array();
@@ -54,6 +55,7 @@ $reservation->setCustomer_id($customer_id);
 $reservation->setStart_date($start_date);
 $reservation->setEnd_date($end_date);
 $reservation->setTotal_price($total);
+
 $result = $reservation->save();
 
 if ($result) {
