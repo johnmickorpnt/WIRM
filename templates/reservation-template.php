@@ -1,5 +1,6 @@
 <?php
 $_SESSION["errors"] = array();
+$serrios;
 if(!isset($_SESSION["id"])){
     array_push($_SESSION["errors"], "Please make sure you are logged in to make a reservation!");
     header('Location: ' . 'auth/login.php');

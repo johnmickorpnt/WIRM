@@ -12,6 +12,20 @@ class Reservation
                 $this->conn = $db;
         }
 
+        public function save()
+        {
+                $query = "INSERT INTO {$this->table} (customer_id, room_id, start_date, end_date , total_price) 
+					VALUES (:customer_id, :room_id, :start_date, :end_date, :total_price)";
+                $stmt = $this->conn->prepare($query);
+
+                $stmt->bindParam(":customer_id", $this->customer_id);
+                $stmt->bindParam(":room_id", $this->room_id);
+                $stmt->bindParam(":start_date", $this->start_date);
+                $stmt->bindParam(":end_date", $this->end_date);
+                $stmt->bindParam(":total_price",  $this->total_price);
+                $stmt->execute();
+                return $stmt;
+        }
         /**
          * Get the value of id
          */
