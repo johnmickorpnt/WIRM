@@ -1,6 +1,26 @@
 <?php
 $title = "About us - Cafe Lupe";
-$containerStyles = "padding: 0 10rem 0 10rem; margin-top:10rem";
+$extraCss = <<<EXTRACSS
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+EXTRACSS;
+$extraJs = <<<EXTRAJS
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" 
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+EXTRAJS;
+$containerStyles = "padding: 0 10rem 0 10rem; margin-top:10rem; margin-bottom:5rem";
+$script = <<<SCRIPT
+    <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                var map = L.map('map').setView([14.61772, 121.14026], 18);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        });
+    </script>
+SCRIPT;
 $content = <<<CONTENT
     <div class="hr-container">
         <hr>
@@ -43,9 +63,9 @@ $content = <<<CONTENT
                 Book a reservation now
             </a>
         </div>
-
+        <div id="map" style="height:200px">
+        </div>
     </section>
-    
 CONTENT;
 ?>
 
