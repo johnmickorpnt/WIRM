@@ -81,6 +81,7 @@ $content = <<<CONTENT
             <span class="schedule">Friday to Saturday</span>
             <p>2 Person Capacity</p>
         </div>
+        <div id="mapid" style="height: 500px;"></div>
     </section>
 CONTENT;
 ?>

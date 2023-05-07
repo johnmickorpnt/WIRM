@@ -12,14 +12,18 @@ require_once("php/functions.php");
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="css/styles.css">
     <?php include("components/links.php"); ?>
+    <?php echo isset($extraCss) ? $extraCss : ""?>
+    <?php echo isset($extraJs) ? $extraJs : ""?>
+    
 </head>
 
 <body>
     <?php include("components/navbar.php"); ?>
-    <main class="container <?php echo isset($containerClass) ? $containerClass : ""; ?>" 
-        <?php echo isset($containerStyles) ? "style='{$containerStyles}'" : "" ?>>
+    <main class="container <?php echo isset($containerClass) ? $containerClass : ""; ?>" <?php echo isset($containerStyles) ? "style='{$containerStyles}'" : "" ?>>
         <?php echo $content; ?>
     </main>
 </body>
-
+<?php
+echo isset($script) ? $script : "";
+?>
 </html>
