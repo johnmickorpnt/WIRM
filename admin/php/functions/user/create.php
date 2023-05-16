@@ -23,73 +23,46 @@ $contact_number = null;
 $email = null;
 $password = null;
 
-// START OF VALIDATION BLOCK
-if (!isset($_POST['customer_id'])) {
-    $valid[0] = false;
-    array_push($errors, "Customer ID is empty. Please select a customer.");
-} else {
-    $valid[0] = true;
-    $customer_id = $_POST['customer_id'];
-}
 
-if (!isset($_POST['room_id'])) {
+if (!isset($_POST['firstname'])) {
     $valid[1] = false;
-    array_push($errors, "Room ID is empty. Please select a room.");
+    array_push($errors, "First name is empty. Please select input a first name.");
 } else {
-    $room_id = $_POST['room_id'];
+    $firstname = $_POST['firstname'];
     $valid[1] = true;
 }
 
-if (!isset($_POST['start_date'])) {
+if (!isset($_POST['lastname'])) {
     $valid[2] = false;
-    array_push($errors, "Select an appropriate Start Date");
+    array_push($errors, "Last name is empty. Please select input a first name.");
 } else {
-    $start_date = $_POST['start_date'];
+    $lastname = $_POST['lastname'];
     $valid[2] = true;
 }
 
-if (!isset($_POST['end_date'])) {
+if (!isset($_POST['contact_number'])) {
     $valid[3] = false;
-    array_push($errors, "Select an appropriate End Date");
+    array_push($errors, "Contact Number is empty. Please select input a first name.");
 } else {
-    $end_date = $_POST['end_date'];
+    $contact_number = $_POST['contact_number'];
     $valid[3] = true;
 }
 
-if (!isset($_POST['num_of_guests'])) {
+if (!isset($_POST['email'])) {
     $valid[4] = false;
-    array_push($errors, "Input an appropriate number of guests");
+    array_push($errors, "Email is empty. Please select input a first name.");
 } else {
-    $num_of_guests = $_POST['num_of_guests'];
+    $email = $_POST['email'];
     $valid[4] = true;
 }
 
-if (!isset($_POST['total_price'])) {
+if (!isset($_POST['password'])) {
     $valid[5] = false;
-    array_push($errors, "Input the appropriate total price");
+    array_push($errors, "Password is empty. Please select input a first name.");
 } else {
-    $total_price = $_POST['total_price'];
+    $password = $_POST['password'];
     $valid[5] = true;
 }
-
-if (!isset($_POST['status'])) {
-    $valid[6] = false;
-    array_push($errors, "Please select the appropriate status.");
-} else {
-    $status = $_POST['status'];
-    $valid[6] = true;
-}
-
-
-if (!$userObj->get($_POST['customer_id'])) {
-    array_push($errors, "Selected User does not exist. Please reload the page and try again.");
-    $valid[7] = false;
-} else $valid[7] = true;
-
-if (!$roomObj->get($_POST['room_id'], false)->rowCount()) {
-    array_push($errors, "Selected Room does not exist. Please reload the page and try again.");
-    $valid[8] = false;
-} else $valid[8] = true;
 
 // EXIT OUT OF SCRIPT IF THERE ARE VALIDATION ERRORS
 if (in_array(false, $valid)) {
@@ -104,17 +77,18 @@ if (in_array(false, $valid)) {
     exit();
 }
 
-$user->setFirst_name($fname);
-$user->setLast_name($lname);
-$user->setEmail($email);
-$user->setContact_number($contact_number);
-$user->setPass(password_hash($pass, PASSWORD_DEFAULT));
+$userObj->setFirstname($firstname);
+$userObj->setLastname($lastname);
+$userObj->setEmail($email);
+$userObj->setContact_number($contact_number);
+$userObj->setPassword(password_hash($password, PASSWORD_DEFAULT));
 
-$result = $user->save();
+$result = $userObj->save();
 
 if ($result) {
     http_response_code(200);
     header('Location: ' . '../../../auth/login');
     exit();
 }
+
 ?>

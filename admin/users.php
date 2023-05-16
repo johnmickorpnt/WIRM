@@ -13,52 +13,33 @@ $userObj = new User($db);
 $users = $userObj->read();
 
 $usersTable = new Table($users);
-$usersTable->setColumns(["firstname", "lastname"]);
-$usersTable->setForm("room");
+$usersTable->setForm("user");
 
 global $newModal, $updateModal, $viewModal, $deleteModal;
-$newModal = new Modal("new_room_modal");
+$newModal = new Modal("new_user_modal");
 $newModal->setStyles(["height:80%!important"]);
 $newModal->setContent(<<<FORM
 		<form method="POST" id="newForm" action="php/functions/user/create.php">
 			<div class="form-container">
 				<div class="input-wrapper">
-					<input type="number" class="modern-input" id="room_number" name="room_number" required>
-					<label class="input-label" for="">Room Number</label>
-				</div>
-				<div class="select-wrapper">
-					<select class="modern-select" id="type" name="type" required>
-						<option value="2 Single Beds">2 Single Beds</option>
-						<option value="1 King Sized Bed">1 King Sized Bed</option>
-						<option value="1 Queen Sized Bed">1 Queen Sized Bed</option>
-						<option value="Suite Room">Suite Room</option>
-						<option value="2 Single Beds">2 Single Beds</option>
-					</select>
-					<span class="select-arrow"></span>
+					<input type="text" class="modern-input" id="firstname" name="firstname" required>
+					<label class="input-label" for="">First Name</label>
 				</div>
 				<div class="input-wrapper">
-					<input type="number" class="modern-input" id="occupancy" name="occupancy" required>
-					<label class="input-label" for="">Occupancy</label>
+					<input type="text" class="modern-input" id="lastname" name="lastname" required>
+					<label class="input-label" for="">Last Name</label>
 				</div>
 				<div class="input-wrapper">
-					<textarea class="modern-input" id="description" name="description" required></textarea>
-					<label class="input-label" for="">Description</label>
+					<input class="modern-input" id="contact_number" name="contact_number" required>
+					<label class="input-label" for="">Contact Number</label>
 				</div>
 				<div class="input-wrapper">
-					<input type="number" class="modern-input" id="rate_sun_thurs" name="rate_sun_thurs" required>
-					<label class="input-label" for="">Rate from Sunday to Thursday</label>
+					<input type="email" class="modern-input" id="email" name="email" required>
+					<label class="input-label" for="">Email Address</label>
 				</div>
 				<div class="input-wrapper">
-					<input type="number" class="modern-input" id="rate_fri_sat" name="rate_fri_sat" required>
-					<label class="input-label" for="">Rate from Friday to Saturday</label>
-				</div>
-				<div class="select-wrapper">
-					<select class="modern-select" id="availability" name="availability" required>
-						<option value="" selected disabled>Availability...</option>
-						<option value="1">Available</option>
-						<option value="0">Unavailable</option>
-					</select>
-					<span class="select-arrow"></span>
+					<input type="password" class="modern-input" id="password" name="password" required>
+					<label class="input-label" for="">Password</label>
 				</div>
 				<div class="submit-btn-group">
 					<button class="submit-button">Submit</button>
@@ -68,107 +49,66 @@ $newModal->setContent(<<<FORM
 		</form>
 	FORM);
 
-$updateModal = new Modal("update_reservation_modal");
+$updateModal = new Modal("update_user_modal");
 $updateModal->setContent(<<<FORM
-	<form method="POST" id="roomUpdateForm" action="php/functions/room/update.php">
-		<input id="room_id" name="room_id" type="hidden">
-		<div class="form-container">
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="room_number" name="room_number" required>
-				<label class="input-label" for="">Room Number</label>
-			</div>
-			<div class="select-wrapper">
-				<select class="modern-select" id="type" name="type" required>
-					<option value="2 Single Beds">2 Single Beds</option>
-					<option value="1 King Sized Bed">1 King Sized Bed</option>
-					<option value="1 Queen Sized Bed">1 Queen Sized Bed</option>
-					<option value="Suite Room">Suite Room</option>
-					<option value="2 Single Beds">2 Single Beds</option>
-				</select>
-				<span class="select-arrow"></span>
-			</div>
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="occupancy" name="occupancy" required>
-				<label class="input-label" for="">Occupancy</label>
-			</div>
-			<div class="input-wrapper">
-				<textarea class="modern-input" id="description" name="description" required></textarea>
-				<label class="input-label" for="">Description</label>
-			</div>
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="rate_sun_thurs" name="rate_sun_thurs" required>
-				<label class="input-label" for="">Rate from Sunday to Thursday</label>
-			</div>
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="rate_fri_sat" name="rate_fri_sat" required>
-				<label class="input-label" for="">Rate from Friday to Saturday</label>
-			</div>
-			<div class="select-wrapper">
-				<select class="modern-select" id="availability" name="availability" required>
-					<option value="" selected disabled>Availability...</option>
-					<option value="1">Available</option>
-					<option value="0">Unavailable</option>
-				</select>
-				<span class="select-arrow"></span>
-			</div>
-			<div class="submit-btn-group">
-				<button class="submit-button">Submit</button>
-				<button class="cancel-button">Cancel</button>
-			</div>
-		</div>
-	</form>
-	FORM);
-$updateModal->setHeader("Update Reservation");
+<form method="POST" id="newForm" action="php/functions/user/create.php">
+    <div class="form-container">
+        <div class="input-wrapper">
+            <input type="text" class="modern-input" id="firstname" name="firstname" required>
+            <label class="input-label" for="">First Name</label>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modern-input" id="lastname" name="lastname" required>
+            <label class="input-label" for="">Last Name</label>
+        </div>
+        <div class="input-wrapper">
+            <input class="modern-input" id="contact_number" name="contact_number" required>
+            <label class="input-label" for="">Contact Number</label>
+        </div>
+        <div class="input-wrapper">
+            <input type="email" class="modern-input" id="email" name="email" required>
+            <label class="input-label" for="">Email Address</label>
+        </div>
+        <div class="input-wrapper">
+            <input type="password" class="modern-input" id="password" name="password" required>
+            <label class="input-label" for="">Password</label>
+        </div>
+        <div class="submit-btn-group">
+            <button class="submit-button">Submit</button>
+            <button class="cancel-button">Cancel</button>
+        </div>
+    </div>
+</form>
+FORM);
+$updateModal->setHeader("Update User");
 
 $viewModal = new Modal("view_reservation_modal");
 $viewModal->setContent(<<<VIEW
-	<form id="roomViewForm">
-		<input id="room_id" name="room_id" type="hidden">
+	<form id="userViewForm">
+		<input id="user_id" name="user_id" type="hidden">
 		<div class="form-container">
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="room_number" name="room_number" readonly>
-				<label class="input-label" for="">Room Number</label>
-			</div>
-			<div class="select-wrapper">
-				<select class="modern-select" id="type" name="type" disabled>
-					<option value="2 Single Beds">2 Single Beds</option>
-					<option value="1 King Sized Bed">1 King Sized Bed</option>
-					<option value="1 Queen Sized Bed">1 Queen Sized Bed</option>
-					<option value="Suite Room">Suite Room</option>
-					<option value="2 Single Beds">2 Single Beds</option>
-				</select>
-				<span class="select-arrow"></span>
-			</div>
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="occupancy" name="occupancy" readonly>
-				<label class="input-label" for="">Occupancy</label>
-			</div>
-			<div class="input-wrapper">
-				<textarea class="modern-input" id="description" name="description" readonly></textarea>
-				<label class="input-label" for="">Description</label>
-			</div>
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="rate_sun_thurs" name="rate_sun_thurs" readonly>
-				<label class="input-label" for="">Rate from Sunday to Thursday</label>
-			</div>
-			<div class="input-wrapper">
-				<input type="number" class="modern-input" id="rate_fri_sat" name="rate_fri_sat" readonly>
-				<label class="input-label" for="">Rate from Friday to Saturday</label>
-			</div>
-			<div class="select-wrapper">
-				<select class="modern-select" id="availability" name="availability" disabled>
-					<option value="" selected disabled>Availability...</option>
-					<option value="1">Available</option>
-					<option value="0">Unavailable</option>
-				</select>
-				<span class="select-arrow"></span>
-			</div>
-			<div class="submit-btn-group">
-				<button class="cancel-button">Close</button>
-			</div>
-		</div>
+            <div class="input-wrapper">
+                <input type="text" class="modern-input" id="firstname" name="firstname" readonly>
+                <label class="input-label" for="">First Name</label>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" class="modern-input" id="lastname" name="lastname" readonly>
+                <label class="input-label" for="">Last Name</label>
+            </div>
+            <div class="input-wrapper">
+                <input class="modern-input" id="contact_number" name="contact_number" readonly>
+                <label class="input-label" for="">Contact Number</label>
+            </div>
+            <div class="input-wrapper">
+                <input type="email" class="modern-input" id="email" name="email" readonly>
+                <label class="input-label" for="">Email Address</label>
+            </div>
+            <div class="submit-btn-group">
+                <button class="cancel-button">Close</button>
+            </div>
+        </div>
 	</form>
-	VIEW);
+VIEW);
 
 $viewModal->setHeader("View Reservation");
 
@@ -178,7 +118,7 @@ $content = <<<CONTENT
 	{$viewModal->build_modal()}
 
 	<section class="dashboard-section">
-		<h4>Manage Your Hotel Rooms</h4>
+		<h4>Manage Your Current Users</h4>
 		<div class="row-actions">
 			<div class="search-bar">
 				<input type="text" id="search-input" placeholder="Search...">
@@ -186,7 +126,7 @@ $content = <<<CONTENT
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
-			<button class="action-button add-button" method="add" target-modal="new_room_modal"
+			<button class="action-button add-button" method="add" target-modal="new_user_modal"
 				data-function="fetch_user_rooms" target-form="newForm" style="margin-left:auto">
 				<i class="fa-solid fa-plus"></i> Add
 			</button>
@@ -202,18 +142,16 @@ $scripts = <<<SCRIPT
 
 	async function fetch_user_rooms(target_form, target_id) {
 		try {
-			let room = target_id !== null ? await fetch_room(target_id) : null;
+			let user = target_id !== null ? await fetch_user(target_id) : null;
 			
-			console.log("form#" + target_form + " #bed_type");
+			console.log("form#" + target_form + " #user_id");
 			if(target_id === null) return false;
-			document.querySelector("form#" + target_form + " #room_id").value = target_id;
-			document.querySelector("form#" + target_form + " #room_number").value = room.room_number;
-			document.querySelector("form#" + target_form + " #type").value = room.type;
-			document.querySelector("form#" + target_form + " #occupancy").value = room.occupancy;
-			document.querySelector("form#" + target_form + " #description").value = room.description;
-			document.querySelector("form#" + target_form + " #rate_sun_thurs").value = room.rate_sun_thurs;
-			document.querySelector("form#" + target_form + " #rate_fri_sat").value = room.rate_fri_sat;
-			document.querySelector("form#" + target_form + " #availability").value = room.availability;
+			document.querySelector("form#" + target_form + " #user_id").value = target_id;
+			document.querySelector("form#" + target_form + " #firstname").value = user.firstname;
+			document.querySelector("form#" + target_form + " #lastname").value = user.lastname;
+			document.querySelector("form#" + target_form + " #contact_number").value = user.contact_number;
+			document.querySelector("form#" + target_form + " #email").value = user.email;
+
 		} catch (error) {
 			// Handle any errors that occurred during the request
 			console.error('Error:', error);

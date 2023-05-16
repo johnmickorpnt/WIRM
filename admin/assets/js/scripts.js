@@ -101,6 +101,23 @@ var fetch_room = (id) => {
         });
 }
 
+var fetch_user = (id) => {
+    var params = new URLSearchParams();
+    params.append("user_id", id);
+
+    return fetch('http://localhost/wirm/admin/php/functions/user/read.php', {
+        method: 'POST',
+        body: params,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+        .then(res => res.json())
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
 
 function showLoadingSpinner(classElement) {
     // Show loading spinner logic here

@@ -40,7 +40,7 @@ $lastPart = end($parts);
                     Manage Users
                 </span>
             </li>
-            <li>
+            <li <?= $lastPart === "users" ? "class='active'" : ""?>>
                 <a href="users">
                     <i class="fa-sharp fa-solid fa-users"></i>
                     Users

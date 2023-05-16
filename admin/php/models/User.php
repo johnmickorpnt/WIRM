@@ -13,7 +13,7 @@ class User
 
     public function read()
     {
-        $q = "SELECT * FROM {$this->table};";
+        $q = "SELECT id, firstname, lastname, contact_number, email FROM {$this->table};";
         $stmt = $this->conn->prepare($q);
         $stmt->execute();
         $data = array();
@@ -23,22 +23,23 @@ class User
         return $data;
     }
 
-    public function get($id)
+    public function get($id, $collate)
     {
         $q = "SELECT * FROM {$this->table} WHERE id = {$id};";
         $stmt = $this->conn->prepare($q);
         $stmt->execute();
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $this->setId($row["id"]);
-            $this->setFirstname($row["firstname"]);
-            $this->setLastname($row["lastname"]);
-            $this->setContact_number($row["contact_number"]);
-            $this->setEmail($row["email"]);
-            $this->setPassword($row["password"]);
-            $this->setCreated_at($row["created_at"]);
-            $this->setUpdated_at($row["updated_at"]);
-        }
-        return $stmt->rowCount();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->setId($result["id"]);
+        $this->setFirstname($result["firstname"]);
+        $this->setLastname($result["lastname"]);
+        $this->setContact_number($result["contact_number"]);
+        $this->setEmail($result["email"]);
+        $this->setPassword($result["password"]);
+        $this->setCreated_at($result["created_at"]);
+        $this->setUpdated_at($result["updated_at"]);
+
+        return $collate ? $result : $this;
     }
 
     public function save()
@@ -75,8 +76,8 @@ class User
         $currentTimestamp = date('Y-m-d H:i:s');
         $sql = "INSERT INTO {$this->table} (id, firstname, lastname,
         contact_number, email, password, created_at, updated_at) 
-            VALUES (NULL, :room_number, :type, :occupancy, :rate_sun_thurs, :rate_fri_sat, 
-            :description, :availability)";
+            VALUES (NULL, :firstname, :lastname, :contact_number, :email, 
+            :password, :created_at, :updated_at)";
         $stmt = $this->conn->prepare($sql);
 
         // Bind the values to the prepared statement
@@ -85,9 +86,11 @@ class User
         $stmt->bindValue(':contact_number', $this->contact_number);
         $stmt->bindValue(':email', $this->email);
         $stmt->bindValue(':password', $this->password);
-        $stmt->bindValue(':created_at', $this->created_at);
-        $stmt->bindValue(':updated_at', $this->updated_at);
+        $stmt->bindValue(':created_at', $currentTimestamp);
+        $stmt->bindValue(':updated_at', $currentTimestamp);
+
         $result = $stmt->execute();
+
         return $result;
     }
     /**
