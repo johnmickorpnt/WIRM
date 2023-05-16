@@ -3,6 +3,14 @@ session_start();
 require_once "../../config/Database.php";
 require_once "../../models/User.php";
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../PHPMailer/src/Exception.php';
+require '../../PHPMailer/src/PHPMailer.php';
+require '../../PHPMailer/src/SMTP.php';
+
 $valid = array();
 $_SESSION["msg"] = array();
 $_SESSION["errors"] = array();
@@ -78,6 +86,35 @@ $user->setPass(password_hash($pass, PASSWORD_DEFAULT));
 $result = $user->save();
 
 if ($result) {
+    $mail = new PHPMailer(true);
+    $mail->isSMTP(); // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true; // Enable SMTP authentication
+
+
+    $mail->Username = 'jacobmartindummy@gmail.com';
+    $mail->Password = 'topldwzedgeifuge';
+    $mail->Port = 587;
+    $mail->SMTPSecure = 'tls';
+
+    $mail->setFrom('jacobmartindummy@gmail.com');
+    $mail->addAddress($email);
+    $mail->isHTML(true);
+    $mail->Subject = "Hubz Bistro Account Creation";
+
+
+    $mail->Body = <<<MSG
+				<h1>Hello and Welcome to Cafe.</h1>
+				<h3>
+					You are now able to book a reservation to Cafe Lupe!
+				</h3>
+			MSG;
+    try {
+        $mail->send();
+        echo json_encode(["response" => "Registration Successful.", ["status" => true]]);
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
     http_response_code(200);
     header('Location: ' . '../../../auth/login');
     exit();
