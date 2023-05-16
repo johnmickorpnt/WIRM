@@ -61,7 +61,7 @@ $scripts = <<<SCRIPTS
 			// reservation.customer_id;
 			let userSelect = document.querySelector("form#" + target_form + " #customer_id");
 			let roomSelect = document.querySelector("form#" + target_form + " #room_id");
-
+			console.log("form#" + target_form + " #room_id");
 			userSelect.innerHTML = "";
 			roomSelect.innerHTML = "";
 
@@ -164,7 +164,7 @@ function init_modals()
 	$updateModal = new Modal("update_reservation_modal");
 	$updateModal->setContent(<<<FORM
 	<form method="POST" id="reservationUpdateForm" action="php/functions/reservation/update.php">
-			<input id="room_id" name="reservation_id" type="hidden" value="">
+			<input id="reservation_id" name="reservation_id" type="hidden" value="">
 			<div class="form-container">
 				<div class="form-two-col">
 					<div class="select-wrapper">
@@ -219,7 +219,7 @@ function init_modals()
 
 	$viewModal = new Modal("view_reservation_modal");
 	$viewModal->setContent(<<<VIEW
-	<form id="roomViewForm">
+	<form id="reservationViewForm">
 			<input id="reservation_id" name="reservation_id" type="hidden" value="">
 			<div class="form-container">
 				<div class="form-two-col">
