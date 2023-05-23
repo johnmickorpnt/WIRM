@@ -39,7 +39,7 @@ if (!isset($_POST['reservation_id'])) {
 $reservationObj->get($reservation_id, false);
 
 // START OF VALIDATION BLOCK
-if (!$userObj->get($_POST['customer_id'])) {
+if (!$userObj->get($_POST['customer_id'], false)) {
     array_push($errors, "Selected User does not exist. Please reload the page and try again.");
     $valid[7] = false;
 } else $valid[7] = true;

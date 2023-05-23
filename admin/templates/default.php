@@ -13,6 +13,7 @@
     <script src="https://kit.fontawesome.com/fbc9e418a7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </head>
 
 <body>
@@ -23,5 +24,6 @@
     </main>
 </body>
 <script src="assets/js/scripts.js"></script>
-<?= isset($scripts) ? $scripts : ""?>
+<?= isset($scripts) ? $scripts : "" ?>
+
 </html>

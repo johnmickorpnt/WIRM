@@ -19,10 +19,28 @@ class Room
         $stmt = $this->conn->prepare($q);
         $stmt->execute();
         $data = array();
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) array_push($data, $row);
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) array_push($data, $row);
         return $data;
     }
 
+    public function is_exists($id)
+    {
+        $q = "SELECT * FROM {$this->table} WHERE id = :id";
+        $stmt = $this->conn->prepare($q);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->rowCount();
+    }
     /**
      * Get the value of id
      */

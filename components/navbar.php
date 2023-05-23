@@ -8,7 +8,10 @@
         <?php
         echo isset($_SESSION["id"]) ? <<<CONTENT
         <li class="auth-item ml-auto">
-            <a href="php/functions/auth/logout.php">Logout</a>
+            <a href="my-account">My Account</a>
+        </li>
+        <li class="auth-item">
+            <a href="php/functions/auth/logout">Logout</a>
         </li>
         CONTENT : <<<CONTENT
         <li class="auth-item ml-auto">
@@ -21,21 +24,21 @@
         ?>
     </ul>
     <ul class="main">
-        <li class="nav-item <?php is_active('home')?>" style="margin-left:auto">
+        <li class="nav-item <?php is_active('home') ?>" style="margin-left:auto">
             <a href="home" rel="noopener noreferrer">
                 Home
             </a>
         </li>
-        <li class="nav-item <?php is_active('reservation')?>">
+        <li class="nav-item <?php is_active('reservation') ?>">
             <a href="reservation">Reservation</a>
         </li>
-        <li class="nav-item <?php is_active('services')?>">
+        <li class="nav-item <?php is_active('services') ?>">
             <a href="services">Services</a>
         </li>
-        <li class="nav-item <?php is_active('promos')?>">
+        <li class="nav-item <?php is_active('promos') ?>">
             <a href="promos">Promos</a>
         </li>
-        <li class="nav-item <?php is_active('about-us')?>">
+        <li class="nav-item <?php is_active('about-us') ?>">
             <a href="about-us">About us</a>
         </li>
     </ul>

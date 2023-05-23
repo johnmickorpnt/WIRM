@@ -45,6 +45,16 @@ class Reservation
         return $collate ? $result : $this;
     }
 
+    public function is_exists($id)
+    {
+        $q = "SELECT * FROM {$this->table} WHERE id = :id";
+        $stmt = $this->conn->prepare($q);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
+
     public function rowCount($id)
     {
         $q = "SELECT COUNT(*) as count FROM {$this->table} WHERE id = {$id};";
@@ -105,6 +115,15 @@ class Reservation
         $stmt->bindValue(':status', $this->status);
         $stmt->bindValue(':created_at', $currentTimestamp);
         $stmt->bindValue(':updated_at', $currentTimestamp);
+        $result = $stmt->execute();
+        return $result;
+    }
+
+    public function delete($id)
+    {
+        $newId = $id !== null ? $id : $this->id;
+        $sql = "DELETE FROM {$this->table} WHERE id = $newId";
+        $stmt = $this->conn->prepare($sql);
         $result = $stmt->execute();
         return $result;
     }

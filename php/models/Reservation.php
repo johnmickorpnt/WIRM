@@ -26,6 +26,58 @@ class Reservation
                 $stmt->execute();
                 return $stmt;
         }
+
+        public function cancelReservation($reservationId)
+        {
+                // Update the reservation status to canceled in the reservations table
+                $query = "UPDATE reservations SET status = 'cancelled' WHERE id = :reservationId";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(":reservationId", $reservationId);
+                $stmt->execute();
+
+                // Delete the payment record associated with the reservation from the payments table
+                $query = "DELETE FROM {$this->table} WHERE id = :paymentId";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(":paymentId", $this->id);
+                $stmt->execute();
+
+                return true;
+        }
+
+        public function is_exists($id)
+        {
+                $q = "SELECT * FROM {$this->table} WHERE id = :id";
+                $stmt = $this->conn->prepare($q);
+                $stmt->bindValue(':id', $id);
+                $stmt->execute();
+                return $stmt->rowCount() > 0;
+        }
+        
+        public function getReservationsByCustomerId($customer_id)
+        {
+                $query = "SELECT * FROM {$this->table} WHERE customer_id = :customer_id";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindValue(':customer_id', $customer_id);
+                $stmt->execute();
+
+                $reservations = array();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        $reservations[] = $row;
+                }
+
+                return $reservations;
+        }
+        public function delete($id)
+        {
+                $sql = "DELETE FROM {$this->table} WHERE id = :id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+
+                return $stmt->rowCount();
+        }
+
+
         /**
          * Get the value of id
          */

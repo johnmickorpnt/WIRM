@@ -16,6 +16,10 @@ $rooms = $roomsObj->read();
 
 $roomsTable = new Table($rooms);
 $roomsTable->setForm("room");
+$roomsTable->setTblTitle("rooms");
+
+$roomsTable->setHasActions(true);
+
 
 global $newModal, $updateModal, $viewModal, $deleteModal;
 $newModal = new Modal("new_room_modal");

@@ -14,12 +14,16 @@ $users = $userObj->read();
 
 $usersTable = new Table($users);
 $usersTable->setForm("user");
+$usersTable->setTblTitle("users");
+$usersTable->setHasActions(true);
+$usersTable->setTblTitle("users");
 
 global $newModal, $updateModal, $viewModal, $deleteModal;
 $newModal = new Modal("new_user_modal");
 $newModal->setStyles(["height:80%!important"]);
 $newModal->setContent(<<<FORM
 		<form method="POST" id="newForm" action="php/functions/user/create.php">
+			
 			<div class="form-container">
 				<div class="input-wrapper">
 					<input type="text" class="modern-input" id="firstname" name="firstname" required>
@@ -49,10 +53,11 @@ $newModal->setContent(<<<FORM
 		</form>
 	FORM);
 
-$updateModal = new Modal("update_user_modal");
+$updateModal = new Modal("update_reservation_modal");
 $updateModal->setContent(<<<FORM
-<form method="POST" id="newForm" action="php/functions/user/create.php">
-    <div class="form-container">
+<form method="POST" id="userUpdateForm" action="php/functions/user/create.php">
+	<input id="user_id" name="user_id" type=hidden>
+	<div class="form-container">
         <div class="input-wrapper">
             <input type="text" class="modern-input" id="firstname" name="firstname" required>
             <label class="input-label" for="">First Name</label>

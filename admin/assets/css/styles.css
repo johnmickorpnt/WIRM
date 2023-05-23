@@ -364,7 +364,7 @@ dialog.modal.modal-wrapper {
 }
 
 
-.form-container{
+.form-container {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -426,7 +426,7 @@ dialog.modal.modal-wrapper {
     outline: none;
 }
 
-.loading{
+.loading {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -448,6 +448,24 @@ dialog.modal.modal-wrapper {
     flex-direction: column;
 }
 
-.loading-info span{
+.loading-info span {
     margin-top: 1.5rem;
+}
+
+
+.flatpickr-calendar {
+    z-index: 9999;
+    /* Adjust the z-index value as needed */
+    position: relative;
+    /* or position: absolute; */
+}
+
+.flatpickr-calendar.open {
+    z-index: 10000;
+}
+
+.action-column{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }

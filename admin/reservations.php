@@ -15,6 +15,9 @@ $reservations = $reservationObj->read();
 
 $reservationTable = new Table($reservations);
 $reservationTable->setForm("reservation");
+$reservationTable->setTblTitle("reservations");
+$reservationTable->setHasActions(true);
+
 $reservationObj = new Reservation($db);
 
 init_modals();
@@ -123,11 +126,11 @@ function init_modals()
 				</div>
 				<div class="form-two-col">
 					<div class="input-wrapper">
-						<input type="date" class="modern-input" id="start_date" name="start_date" required>
+						<input type="text" class="modern-input datetime" id="start_date" name="start_date" required>
 						<label class="input-label" for="">Start Date</label>
 					</div>
 					<div class="input-wrapper">
-						<input type="date" class="modern-input" id="end_date" name="end_date" required>
+						<input type="text" class="modern-input datetime" id="end_date" name="end_date" required>
 						<label class="input-label" for="">End Date</label>
 					</div>
 				</div>
@@ -180,11 +183,11 @@ function init_modals()
 				</div>
 				<div class="form-two-col">
 					<div class="input-wrapper">
-						<input type="date" class="modern-input" id="start_date" name="start_date">
+						<input type="text" class="modern-input datetime" id="start_date" name="start_date">
 						<label class="input-label" for="">Start Date</label>
 					</div>
 					<div class="input-wrapper">
-						<input type="date" class="modern-input" id="end_date" name="end_date">
+						<input type="text" class="modern-input datetime" id="end_date" name="end_date">
 						<label class="input-label" for="">End Date</label>
 					</div>
 				</div>
@@ -236,11 +239,11 @@ function init_modals()
 				</div>
 				<div class="form-two-col">
 					<div class="input-wrapper">
-						<input type="date" class="modern-input" id="start_date" name="start_date" readonly>
+						<input type="text" class="modern-input datetime" id="start_date" name="start_date" readonly>
 						<label class="input-label" for=""></label>
 					</div>
 					<div class="input-wrapper">
-						<input type="date" class="modern-input" id="end_date" name="end_date" readonly>
+						<input type="text" class="modern-input datetime" id="end_date" name="end_date" readonly>
 						<label class="input-label" for=""></label>
 					</div>
 				</div>

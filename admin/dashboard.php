@@ -13,6 +13,7 @@ $reservationObj = new Reservation($db);
 $reservations = $reservationObj->read();
 
 $reservationTable = new Table($reservations);
+$reservationTable->setHasActions(false);
 
 $content = <<<CONTENT
     <h2>

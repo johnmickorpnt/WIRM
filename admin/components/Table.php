@@ -1,7 +1,8 @@
 <?php
 class Table
 {
-    private $tbl, $header, $content, $id, $styles, $attributes, $columns, $form;
+    private $tbl, $header, $content, $id, $styles, $attributes, $columns, $form, 
+    $tblTitle, $hasActions;
     
     public function __construct($tbl)
     {
@@ -16,7 +17,7 @@ class Table
             $newTh = str_replace("_", " ", $th);
             $header .= "<th>$newTh</th>";
         }
-        $header .= "<th>Actions</th>";
+        $header .= isset($this->hasActions) && $this->hasActions ? "<th>Actions</th>" : "";
         $this->setHeader($header);
     }
 
@@ -31,8 +32,8 @@ class Table
                 $rows .= "<td>$subRow</td>";
                 if($subKey == "id") $targetId = $subRow;
             }
-            $rows .= <<<ACT
-            <td>
+            $rows .= isset($this->hasActions) && $this->hasActions ? <<<ACT
+            <td class="action-column">
                 <!-- View Button -->
                 <button class="action-button view-button" method="view" target-modal="view_reservation_modal" target-id="{$targetId}" 
                     target-form="{$this->getForm()}ViewForm" data-function="fetch_user_rooms">
@@ -40,7 +41,8 @@ class Table
                 </button>
                 
                 <!-- Delete Button -->
-                <button class="action-button delete-button" method="delete" target-modal="delete_confirmation_modal" target-id="{$targetId}">
+                <button class="action-button delete-button" method="delete" target-id="{$targetId}"
+                onclick="delete_row({$targetId},'{$this->tblTitle}')">
                     <i class="fas fa-trash"></i> Delete
                 </button>
                 
@@ -50,7 +52,7 @@ class Table
                     <i class="fas fa-edit"></i> Update
                 </button>
             </td>
-            ACT;
+            ACT : "";
             $rows .= "</tr>";
         }
         $this->setContent($rows);
@@ -228,6 +230,46 @@ class Table
     public function setForm($form)
     {
         $this->form = $form;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tblTitle
+     */ 
+    public function getTblTitle()
+    {
+        return $this->tblTitle;
+    }
+
+    /**
+     * Set the value of tblTitle
+     *
+     * @return  self
+     */ 
+    public function setTblTitle($tblTitle)
+    {
+        $this->tblTitle = $tblTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of hasActions
+     */ 
+    public function getHasActions()
+    {
+        return $this->hasActions;
+    }
+
+    /**
+     * Set the value of hasActions
+     *
+     * @return  self
+     */ 
+    public function setHasActions($hasActions)
+    {
+        $this->hasActions = $hasActions;
 
         return $this;
     }

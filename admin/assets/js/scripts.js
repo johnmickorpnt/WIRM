@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!btn.hasAttribute("target-modal")) return false;
         let targetModal = btn.getAttribute("target-modal");
         btn.addEventListener("click", () => {
+            console.log(targetModal);
             document.getElementById(targetModal).showModal();
             document.getElementById(targetModal).classList.add("open");
 
@@ -47,6 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
             showLoadingSpinner('.loading');
         });
     });
+    flatpickr(".datetime", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i:s",
+        altInput: true,
+        altFormat: "F j, Y H:i:s",
+        static: true
+        // Additional options...
+    });
 });
 
 var fetch_users = () => {
@@ -84,11 +93,14 @@ var fetch_reservation = (id) => {
         });
 }
 
-var fetch_room = (id) => {
+function delete_row(id, table) {
+    let conf = confirm("Are you sure to delete this row?");
     var params = new URLSearchParams();
-    params.append("room_id", id);
+    params.append("id", id);
+    params.append("table", table);
 
-    return fetch('http://localhost/wirm/admin/php/functions/room/read.php', {
+    if (!conf) return;
+    fetch('http://localhost/wirm/admin/php/functions/delete.php', {
         method: 'POST',
         body: params,
         headers: {
@@ -96,8 +108,9 @@ var fetch_room = (id) => {
         }
     })
         .then(res => res.json())
+        .finally(() => location.reload())
         .catch(error => {
-            console.error('Error:', error);
+            alert('Error:', error);
         });
 }
 
