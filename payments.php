@@ -11,6 +11,8 @@ if (isset($_SESSION["errors"])) {
     $errors .= "</ul>";
     unset($_SESSION["errors"]);
 }
+
+$reservationId = $_GET["id"];
 $content = <<<CONTENT
     <a href="home">
         <img src="assets/imgs/cafe-lupe.webp" class="logo" alt="Cafe Lupe">
@@ -18,94 +20,44 @@ $content = <<<CONTENT
     <h1>Offline Payment</h1>
     <p>Please enter the payment details below for offline payment.</p>
     {$errors}
-    <form action="php/functions/payments/process_offline_payment.php" method="POST">
-        <div class="form-group">
-            <label>
-                Payment Method
-            </label>
-            <select id="payment_method" name="payment_method" required>
-                <option value="">Select Payment Method</option>
-                <option value="cash">Cash</option>
-                <option value="cheque">Cheque</option>
-                <option value="bank_transfer">Bank Transfer</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>
-                Amount
-            </label>
-            <input type="text" placeholder="Enter payment amount" id="amount" name="amount" required>
-        </div>
-        <div id="cheque_fields" style="display: none;">
+    <form action="php/functions/payment/create.php" method="POST" enctype="multipart/form-data">
+        <input name="reservation_id" type="hidden" value={$reservationId}>
+        <div id="bank_transfer_fields">
             <div class="form-group">
                 <label>
-                    Cheque Number
+                    Amount
                 </label>
-                <input type="text" placeholder="Enter cheque number" id="cheque_number" name="cheque_number">
+                <input type="number" placeholder="Enter payment amount" id="amount" name="amount" required>
             </div>
             <div class="form-group">
                 <label>
                     Bank Name
                 </label>
-                <input type="text" placeholder="Enter bank name" id="bank_name" name="bank_name">
-            </div>
-            <div class="form-group">
-                <label>
-                    Branch
-                </label>
-                <input type="text" placeholder="Enter branch" id="branch" name="branch">
-            </div>
-            <div class="form-group">
-                <label>
-                    Date Issued
-                </label>
-                <input type="date" id="date_issued" name="date_issued">
-            </div>
-        </div>
-        <div id="bank_transfer_fields" style="display: none;">
-            <div class="form-group">
-                <label>
-                    Bank Name
-                </label>
-                <input type="text" placeholder="Enter bank name" id="bank_name" name="bank_name">
+                <input type="text" placeholder="Enter bank name" id="bank_name" name="bank_name" required>
             </div>
             <div class="form-group">
                 <label>
                     Bank Location
                 </label>
-                <input type="text" placeholder="Enter bank location" id="bank_location" name="bank_location">
+                <input type="text" placeholder="Enter bank location" id="bank_location" name="bank_location" required>
             </div>
             <div class="form-group">
                 <label>
                     Proof of Payment
                 </label>
-                <input type="file" id="proof_of_payment" name="proof_of_payment">
+                <input type="file" id="proof_of_payment" name="proof_of_payment" required>
             </div>
         </div>
         <div class="d-flex flex-direction-column align-items-center gap-1">
             <button class="btn w-100">Submit</button>
-            <a href="home">Cancel</a>
+            <a href="home" onclick="return confirm('Are you sure you want to cancel?')">Cancel</a>
         </div>
     </form>
 
     <script>
-        var paymentMethodSelect = document.getElementById("payment_method");
-        var chequeFields = document.getElementById("cheque_fields");
         var bankTransferFields = document.getElementById("bank_transfer_fields");
 
-        paymentMethodSelect.addEventListener("change", function() {
-            var selectedOption = this.value;
-            
-            // Reset fields
-            chequeFields.style.display = "none";
-            bankTransferFields.style.display = "none";
-
-            if (selectedOption === "cheque") {
-                chequeFields.style.display = "block";
-            } else if (selectedOption === "bank_transfer") {
-                bankTransferFields.style.display = "block";
-            }
-        });
+        bankTransferFields.style.display = "block";
     </script>
 CONTENT;
 ?>

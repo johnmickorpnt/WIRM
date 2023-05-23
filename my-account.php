@@ -34,7 +34,8 @@ if (count($reservations) > 0) {
     foreach ($reservations as $reservation) {
         $cancelBtn = $reservation["status"] == "pending"  ? <<<TD
             <button class="cancel-btn" onclick="confirmCancel('{$reservation['id']}')">Cancel</button>
-        TD : "None"; 
+            <button class="pay-btn" onclick="payReservation({$reservation['id']})">Pay</button>
+            TD : "None"; 
         $table .= '<tr>
             <td>' . $reservation['id'] . '</td>
             <td>' . $reservation['room_id'] . '</td>
@@ -81,6 +82,11 @@ $content = <<<CONTENT
             // Redirect to the cancel.php page with the reservation ID
             window.location.href = 'php/functions/reservation/cancel.php?id=' + reservationId;
         }
+
+        function payReservation(reservationId) {
+            window.location.href = "payments.php?id=" + reservationId;
+        }
+        
     </script>
 CONTENT;
 ?>

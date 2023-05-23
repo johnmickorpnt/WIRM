@@ -2,8 +2,7 @@
 class Payment
 {
     private $table = 'payments';
-    private $id, $reservation_id, $payment_method, $amount, $cheque_number, $bank_name, $branch,
-        $date_issued, $bank_location, $proof_of_payment;
+    private $id, $reservation_id, $amount, $bank_name, $bank_location, $proof_of_payment;
     private $conn;
 
     public function __construct($db)
@@ -13,17 +12,13 @@ class Payment
 
     public function save()
     {
-        $query = "INSERT INTO {$this->table} (reservation_id, payment_method, amount, cheque_number, bank_name, branch, date_issued, bank_location, proof_of_payment)
-VALUES (:reservation_id, :payment_method, :amount, :cheque_number, :bank_name, :branch, :date_issued, :bank_location, :proof_of_payment)";
+        $query = "INSERT INTO {$this->table} (reservation_id, amount, bank_name, bank_location, proof_of_payment)
+                VALUES (:reservation_id, :amount, :bank_name, :bank_location, :proof_of_payment)";
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(":reservation_id", $this->reservation_id);
-        $stmt->bindParam(":payment_method", $this->payment_method);
         $stmt->bindParam(":amount", $this->amount);
-        $stmt->bindParam(":cheque_number", $this->cheque_number);
         $stmt->bindParam(":bank_name", $this->bank_name);
-        $stmt->bindParam(":branch", $this->branch);
-        $stmt->bindParam(":date_issued", $this->date_issued);
         $stmt->bindParam(":bank_location", $this->bank_location);
         $stmt->bindParam(":proof_of_payment", $this->proof_of_payment);
 
@@ -68,17 +63,6 @@ VALUES (:reservation_id, :payment_method, :amount, :cheque_number, :bank_name, :
         return $this;
     }
 
-    public function getPaymentMethod()
-    {
-        return $this->payment_method;
-    }
-
-    public function setPaymentMethod($payment_method)
-    {
-        $this->payment_method = $payment_method;
-        return $this;
-    }
-
     public function getAmount()
     {
         return $this->amount;
@@ -90,17 +74,6 @@ VALUES (:reservation_id, :payment_method, :amount, :cheque_number, :bank_name, :
         return $this;
     }
 
-    public function getChequeNumber()
-    {
-        return $this->cheque_number;
-    }
-
-    public function setChequeNumber($cheque_number)
-    {
-        $this->cheque_number = $cheque_number;
-        return $this;
-    }
-
     public function getBankName()
     {
         return $this->bank_name;
@@ -109,28 +82,6 @@ VALUES (:reservation_id, :payment_method, :amount, :cheque_number, :bank_name, :
     public function setBankName($bank_name)
     {
         $this->bank_name = $bank_name;
-        return $this;
-    }
-
-    public function getBranch()
-    {
-        return $this->branch;
-    }
-
-    public function setBranch($branch)
-    {
-        $this->branch = $branch;
-        return $this;
-    }
-
-    public function getDateIssued()
-    {
-        return $this->date_issued;
-    }
-
-    public function setDateIssued($date_issued)
-    {
-        $this->date_issued = $date_issued;
         return $this;
     }
 

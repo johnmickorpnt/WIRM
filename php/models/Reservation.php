@@ -52,7 +52,23 @@ class Reservation
                 $stmt->execute();
                 return $stmt->rowCount() > 0;
         }
-        
+
+        public function updateStatus()
+        {
+                $query = "UPDATE {$this->table} SET status = :status WHERE id = :id";
+                $stmt = $this->conn->prepare($query);
+
+                $stmt->bindParam(":status", $this->status);
+                $stmt->bindParam(":id", $this->id);
+
+                if ($stmt->execute()) {
+                        return true;
+                } else {
+                        return false;
+                }
+        }
+
+
         public function getReservationsByCustomerId($customer_id)
         {
                 $query = "SELECT * FROM {$this->table} WHERE customer_id = :customer_id";
