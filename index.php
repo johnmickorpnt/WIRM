@@ -1,4 +1,6 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) session_start();
+
 $title = "Home - Cafe Lupe";
 $content = <<<CONTENT
     <img src="assets/imgs/cover.jpg" alt="" class="img-cover p-relative" style="z-index: 0;">

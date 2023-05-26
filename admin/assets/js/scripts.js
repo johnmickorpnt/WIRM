@@ -80,7 +80,7 @@ var fetch_reservation = (id) => {
     var params = new URLSearchParams();
     params.append("reservation_id", id);
 
-    return fetch('http://localhost/wirm/admin/php/functions/reservation/read.php', {
+    return fetch('php/functions/reservation/read.php', {
         method: 'POST',
         body: params,
         headers: {
@@ -100,7 +100,7 @@ function delete_row(id, table) {
     params.append("table", table);
 
     if (!conf) return;
-    fetch('http://localhost/wirm/admin/php/functions/delete.php', {
+    fetch('php/functions/delete.php', {
         method: 'POST',
         body: params,
         headers: {
@@ -118,7 +118,7 @@ var fetch_user = (id) => {
     var params = new URLSearchParams();
     params.append("user_id", id);
 
-    return fetch('http://localhost/wirm/admin/php/functions/user/read.php', {
+    return fetch('php/functions/user/read.php', {
         method: 'POST',
         body: params,
         headers: {
