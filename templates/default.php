@@ -23,6 +23,7 @@ require_once("php/functions.php");
     <main class="container <?php echo isset($containerClass) ? $containerClass : ""; ?>" <?php echo isset($containerStyles) ? "style='{$containerStyles}'" : "" ?>>
         <?php echo $content; ?>
     </main>
+    <?php include("components/footer.php");?>
 </body>
 <?php
 echo isset($script) ? $script : "";
