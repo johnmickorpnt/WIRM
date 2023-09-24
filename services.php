@@ -53,6 +53,7 @@ $content = <<<CONTENT
             <span class="room-price">Php 3,410</span>
             <span class="schedule">Friday to Saturday</span>
             <p>2 Person Capacity</p>
+            <a href="2-single-beds-360.php" class="btn btn-sm select-room">View in 360</a>
         </div>
         <div class="room-item">
             <h2>1 King Sized Bed</h2>
@@ -62,6 +63,7 @@ $content = <<<CONTENT
             <span class="room-price">Php5,830</span>
             <span class="schedule">Friday to Saturday</span>
             <p>2 Person Capacity</p>
+            <a href="1-king-size-360.php" class="btn btn-sm select-room">View in 360</a>
         </div>
         <div class="room-item">
             <h2>1 Queen Sized Bed</h2>
@@ -71,6 +73,7 @@ $content = <<<CONTENT
             <span class="room-price">Php5,830</span>
             <span class="schedule">Friday to Saturday</span>
             <p>2 Person Capacity</p>
+            <a href="1-queen-size-360.php" class="btn btn-sm select-room">View in 360</a>
         </div>
         <div class="room-item">
             <h2>Suite Room</h2>
@@ -80,6 +83,7 @@ $content = <<<CONTENT
             <span class="room-price">Php10,000</span>
             <span class="schedule">Friday to Saturday</span>
             <p>2 Person Capacity</p>
+            <a href="suite-360.php" class="btn btn-sm select-room">View in 360</a>
         </div>
         <div id="mapid" style="height: 500px;"></div>
     </section>

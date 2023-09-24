@@ -12,6 +12,18 @@ class Reservation
                 $this->conn = $db;
         }
 
+        public function available_rooms($type, $checkIn, $checkOut)
+        {
+                $q = "SELECT * FROM reservations INNER JOIN rooms ON reservations.room_id = rooms.id WHERE type = :type AND (start_date BETWEEN :checkIn AND :checkOut) OR (end_date BETWEEN :checkIn AND :checkOut) AND status = 'confirmed';";
+                $stmt = $this->conn->prepare($q);
+                $stmt->bindValue(':type', $type);
+                $stmt->bindValue(':checkIn', $checkIn);
+                $stmt->bindValue(':checkOut', $checkOut);
+
+                $stmt->execute();
+                // $stmt->debugDumpParams();
+                return $stmt->rowCount();
+        }
         public function save()
         {
                 $query = "INSERT INTO {$this->table} (customer_id, room_id, start_date, end_date , total_price) 
@@ -24,8 +36,12 @@ class Reservation
                 $stmt->bindParam(":end_date", $this->end_date);
                 $stmt->bindParam(":total_price",  $this->total_price);
                 $stmt->execute();
+
+                $this->setId($this->conn->lastInsertId());
                 return $stmt;
         }
+
+
 
         public function cancelReservation($reservationId)
         {

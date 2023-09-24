@@ -13,9 +13,11 @@ require_once("php/functions.php");
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="css/styles.css">
     <?php include("components/links.php"); ?>
-    <?php echo isset($extraCss) ? $extraCss : ""?>
-    <?php echo isset($extraJs) ? $extraJs : ""?>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <?php echo isset($extraCss) ? $extraCss : "" ?>
+    <?php echo isset($extraJs) ? $extraJs : "" ?>
+
 </head>
 
 <body>
@@ -23,9 +25,10 @@ require_once("php/functions.php");
     <main class="container <?php echo isset($containerClass) ? $containerClass : ""; ?>" <?php echo isset($containerStyles) ? "style='{$containerStyles}'" : "" ?>>
         <?php echo $content; ?>
     </main>
-    <?php include("components/footer.php");?>
+    <?php include("components/footer.php"); ?>
 </body>
 <?php
 echo isset($script) ? $script : "";
 ?>
+
 </html>

@@ -92,12 +92,12 @@ if ($result) {
     $mail->SMTPAuth = true; // Enable SMTP authentication
 
 
-    $mail->Username = 'jacobmartindummy@gmail.com';
-    $mail->Password = 'topldwzedgeifuge';
+    $mail->Username = 'cafe.lupe.online@gmail.com';
+    $mail->Password = 'bdpvfqjhdopqttke';
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
 
-    $mail->setFrom('jacobmartindummy@gmail.com');
+    $mail->setFrom('cafe.lupe.online@gmail.com');
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = "Hubz Bistro Account Creation";
@@ -106,7 +106,7 @@ if ($result) {
     $mail->Body = <<<MSG
 				<h1>Hello and Welcome to Cafe.</h1>
 				<h3>
-					You are now able to book a reservation to Cafe Lupe!
+					Please see the details of your booking below:
 				</h3>
 			MSG;
     try {

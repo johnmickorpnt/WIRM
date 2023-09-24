@@ -148,6 +148,20 @@ nav li .nav-item {
     background-color: var(--circle-color);
     color: white;
     text-decoration: none;
+    display: inline-block;
+}
+
+.btn.btn-sm{
+    padding: 0.75rem;
+}
+
+a.btn{
+    text-decoration: none;
+    color: white;
+}
+
+a.btn:hover{
+    text-decoration: none;
 }
 
 input {
@@ -609,10 +623,11 @@ a:hover {
     outline: none;
 }
 
-footer{
+footer {
     margin-top: 10rem;
     margin-bottom: 3rem;
 }
+
 footer span {
     display: block;
     text-align: center;
@@ -669,4 +684,31 @@ footer span {
 .about-us-list p {
     text-align: justify;
     font-size: large;
+}
+
+.default-btn {
+    background-color: #44c767;
+    border-radius: 28px;
+    border: 1px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 16px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+
+.default-btn:hover {
+    background-color: #5cbf2a;
+}
+
+.default-btn:active {
+    position: relative;
+    top: 1px;
+}
+
+.date-disabled{
+    background-color: rgba(0, 0, 0, 0.2);
 }

@@ -12,6 +12,16 @@ class Room
         $this->conn = $db;
     }
 
+    public function read($id)
+    {
+        $c = $id != null ? "WHERE id = '{$id}'" : "";
+        $query = "SELECT * FROM {$this->table} {$c};";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
+    
     public function available_rooms($room_type)
     {
         $condition = $room_type != null ? "WHERE type = '{$room_type}' AND availability = 1" : "";

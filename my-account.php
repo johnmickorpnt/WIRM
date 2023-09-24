@@ -8,6 +8,8 @@ $title = "My Account - Cafe Lupe";
 require_once "php/config/Database.php";
 require_once "php/models/Reservation.php";
 require_once "php/models/Payment.php";
+require_once "php/models/User.php";
+
 
 // Create instances of the necessary classes
 $database = new Database();
@@ -17,6 +19,11 @@ $payment = new Payment($db);
 // Get the user's reservations
 $customer_id = $_SESSION['id'] ?? null;
 $reservations = $reservation->getReservationsByCustomerId($customer_id);
+$userObj = new User($db);
+$user = $userObj->read($customer_id)->fetch(PDO::FETCH_ASSOC); 
+$fname = $user['firstname'];
+$lname = $user['lastname'];
+$name = "$fname $lname";
 
 // Prepare the table content
 $table = '';
@@ -54,7 +61,14 @@ $containerStyles = "padding: 0 5rem 0 5rem; margin-top:5rem";
 
 // Prepare the content
 $content = <<<CONTENT
-    <h1>My Account - Booked Reservations</h1>
+    <h1>My Account</h1>
+    <div>
+        <h3>
+            Hello $fname
+        </h3>
+        
+    </div>
+
     <div id="cancel-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>

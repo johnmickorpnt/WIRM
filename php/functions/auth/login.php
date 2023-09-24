@@ -35,6 +35,8 @@ if (!isset($_POST['email']) || !isset($_POST['pass'])) {
     if ($user && password_verify($pass, $user["password"])) {
         // Password is correct
         $_SESSION["id"] = $user["id"];
+        $_SESSION["email"] = $user["email"];
+
         header("Location: ../../../index.php");
         exit();
     } else {

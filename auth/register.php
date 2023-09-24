@@ -12,7 +12,7 @@ if (isset($_SESSION["errors"])) {
     unset($_SESSION["errors"]);
 }
 $content = <<<CONTENT
-    <a href="home">
+    <a href="index">
         <img src="../assets/imgs/cafe-lupe.webp" class="logo" alt="Cafe Lupe">
     </a>    
     <h1>Welcome to to Cafe Lupe!</h1>
