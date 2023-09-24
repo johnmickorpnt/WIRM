@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 05:35 PM
+-- Generation Time: Sep 24, 2023 at 11:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -38,32 +38,6 @@ CREATE TABLE `payments` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `payments`
---
-
-INSERT INTO `payments` (`id`, `reservation_id`, `amount`, `bank_name`, `bank_location`, `proof_of_payment`, `created_at`, `updated_at`) VALUES
-(1, 12, '310.00', 'asd', 'asd', '../../../assets/uploads/qrcode_1684725543.png', '2023-05-23 15:07:27', '2023-05-23 15:07:27'),
-(2, 13, '310.00', 'asd', 'asd', '../../../assets/uploads/qrcode_1684725731.png', '2023-05-23 15:15:38', '2023-05-23 15:15:38'),
-(3, 14, '310.00', 'asd', 'asd', '../../../assets/uploads/qrcode_1684725481.png', '2023-05-23 15:19:32', '2023-05-23 15:19:32'),
-(4, 14, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdacfdd184_6bbb93611fd53db3.png', '2023-05-23 15:25:03', '2023-05-23 15:25:03'),
-(5, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdb161bb45_9b4d0cd7b2d06410.png', '2023-05-23 15:26:14', '2023-05-23 15:26:14'),
-(6, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdb224164f_5b0250f76b63d744.png', '2023-05-23 15:26:26', '2023-05-23 15:26:26'),
-(7, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdb452ec61_69c1b70c30d52d96.png', '2023-05-23 15:27:01', '2023-05-23 15:27:01'),
-(8, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdb45de77b_a4d3e53cb127608e.png', '2023-05-23 15:27:01', '2023-05-23 15:27:01'),
-(9, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdb8c39a66_7d54ba8e8812cf22.png', '2023-05-23 15:28:12', '2023-05-23 15:28:12'),
-(10, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdb8d0f28e_81f83a15e81169cb.png', '2023-05-23 15:28:13', '2023-05-23 15:28:13'),
-(11, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdba5d7400_484f3b9a02daac4a.png', '2023-05-23 15:28:37', '2023-05-23 15:28:37'),
-(12, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdba676e77_9d6df4b8791f083c.png', '2023-05-23 15:28:38', '2023-05-23 15:28:38'),
-(13, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdbaec4eee_aab04ba857214081.png', '2023-05-23 15:28:46', '2023-05-23 15:28:46'),
-(14, 15, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdbb730fb3_35aecb0e36fb9e3e.png', '2023-05-23 15:28:55', '2023-05-23 15:28:55'),
-(15, 16, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdc049a343_3bc931c7ec2a1c79.png', '2023-05-23 15:30:12', '2023-05-23 15:30:12'),
-(16, 16, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdc1aa3805_fb125d7095b8d1de.png', '2023-05-23 15:30:34', '2023-05-23 15:30:34'),
-(17, 16, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdc1b44721_059605e0c0a64074.png', '2023-05-23 15:30:35', '2023-05-23 15:30:35'),
-(18, 16, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdc1ba519a_fda666bab48e1a42.png', '2023-05-23 15:30:35', '2023-05-23 15:30:35'),
-(19, 18, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdc407241b_01379694e31b9552.png', '2023-05-23 15:31:12', '2023-05-23 15:31:12'),
-(20, 18, '310.00', 'asd', 'asd', '../../../assets/uploads/646cdcd997c15_6e3077704c48108b.png', '2023-05-23 15:33:45', '2023-05-23 15:33:45');
-
 -- --------------------------------------------------------
 
 --
@@ -89,22 +63,10 @@ CREATE TABLE `reservations` (
 
 INSERT INTO `reservations` (`id`, `customer_id`, `room_id`, `start_date`, `end_date`, `num_of_guests`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
 (1, 2, 1, '2023-05-22 12:00:00', '2023-05-22 12:00:00', 2, 4400, 'cancelled', '2023-04-13 08:51:53', '2023-04-13 08:51:53'),
-(2, 2, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 4400, 'confirmed', '2023-04-13 08:53:02', '2023-04-13 08:53:02'),
-(3, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 2000, 'checked_out', NULL, NULL),
 (4, 2, 3, '2023-05-17 00:00:00', '2023-05-17 00:00:00', 2222, 222, 'cancelled', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 2, 3, '2023-05-25 00:00:00', '2023-05-17 00:00:00', 2222, 222, 'confirmed', '2023-05-16 09:17:58', '2023-05-16 09:17:58'),
-(6, 1, 3, '2023-05-25 00:00:00', '2023-05-17 00:00:00', 2, 2, 'pending', '2023-05-16 09:24:03', '2023-05-16 09:24:03'),
-(7, 1, 1, '2023-05-23 12:00:00', '2023-05-30 12:00:00', 2, 233, 'confirmed', '2023-05-16 22:21:44', '2023-05-16 22:21:44'),
-(9, 17, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'pending', '2023-05-23 20:21:55', '2023-05-23 20:21:55'),
-(10, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'cancelled', '2023-05-23 20:25:14', '2023-05-23 20:25:14'),
-(11, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'cancelled', '2023-05-23 20:25:57', '2023-05-23 20:25:57'),
-(12, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'cancelled', '2023-05-23 22:31:58', '2023-05-23 22:31:58'),
-(13, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'paid', '2023-05-23 23:14:20', '2023-05-23 23:14:20'),
-(14, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'paid', '2023-05-23 23:15:17', '2023-05-23 23:15:17'),
-(15, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'paid', '2023-05-23 23:25:59', '2023-05-23 23:25:59'),
-(16, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'paid', '2023-05-23 23:30:02', '2023-05-23 23:30:02'),
-(17, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'cancelled', '2023-05-23 23:30:47', '2023-05-23 23:30:47'),
-(18, 2, 3, '2023-05-24 00:00:00', '2023-05-25 00:00:00', 2, 4620, 'confirmed', '2023-05-23 23:30:59', '2023-05-23 23:30:59');
+(5, 2, 3, '2023-09-26 00:00:00', '2023-09-26 08:00:00', 2222, 222, 'confirmed', '2023-05-16 09:17:58', '2023-05-16 09:17:58'),
+(6, 1, 2, '2023-09-24 18:58:51', '2023-09-26 00:58:51', 2, 2000, 'confirmed', '2023-09-25 00:59:11', '2023-09-25 00:59:11'),
+(7, 9, 4, '2023-09-29 12:00:00', '2023-09-29 06:00:00', 2, 8000, 'pending', '2023-09-25 04:07:49', '2023-09-25 04:07:49');
 
 -- --------------------------------------------------------
 
@@ -158,9 +120,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `contact_number`, `email`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'JOhn Micko', 'Rapanot', '09194282431', 'johnmickooo28@gmail.com', '$2y$10$/HgPj6HXHv9ziLCmZ90QseKyB.7PtrRLg4KAWIGx2FKWgDOaJMA/6', '2023-04-13 04:24:55', '2023-04-13 04:24:55'),
 (2, 'JOhn Micko', 'Rapanot', '09194282431', 'johnmickorapanot@yahoo.com', '$2y$10$2ReMljneCDBupknZ.Juv7OJzi5/D03brh1zdgrkpQgm5e/2AeizXa', '2023-04-13 04:45:31', '2023-04-13 04:45:31'),
-(3, 'asd', 'asd', '09194282431', 'johnmickooo28@gmail.com', '$2y$10$iV7VriCT.eiu3TZCNf/4gu8lCtrRRGxJnBpNyRnbeJf7kmna4T01S', '2023-05-16 23:37:49', '2023-05-16 23:37:49'),
 (4, 'JOhn Micko', 'gsag', '09194282431', 'johnmickooo0@gmail.com', '$2y$10$ZYz7fF2KoFIEm1zd5IETg.AJQsfNbKvZ61CGssmRxLEHAa1B0k7oG', '2023-05-17 05:53:18', '2023-05-17 05:53:18'),
-(5, 'John Micko', 'Rapanot', '09194282431', 'pewdiepewdzpewds@gmail.comgas', '$2y$10$CzeGcPWEUjWgi5.EAxmTPuAXQZa9Yme50II6X8FWKyjtAPotR6.Y.', '2023-05-17 05:53:44', '2023-05-17 05:53:44');
+(9, 'John Micko ', 'Rapanot', '09194282431', 'pewdiepewdzpewds@gmail.com', '$2y$10$//hk5X78xY6RW3Rj2NA4p.pfR2TALCsAJ7ao2f9nQ9E4L.s6S5xBu', '2023-09-23 21:15:19', '2023-09-23 21:15:19');
 
 --
 -- Indexes for dumped tables
@@ -177,7 +138,9 @@ ALTER TABLE `payments`
 -- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_Rooms` (`room_id`),
+  ADD KEY `FK_Customer` (`customer_id`);
 
 --
 -- Indexes for table `rooms`
@@ -199,13 +162,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -217,7 +180,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -228,6 +191,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD CONSTRAINT `FK_Customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `FK_Rooms` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
